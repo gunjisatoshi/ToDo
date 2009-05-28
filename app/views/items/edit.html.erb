@@ -1,0 +1,21 @@
+<% @heading = "Edit To Do" %>
+<%= error_messages_for 'item' %>
+<% form_tag({:action => :update, :id => @item}, :method => :put) do %>
+<table>
+  <%= render :partial => "form" %>
+  <tr>
+    <td><b>Notes: </b></td>
+    <% if @item.note_id.nil? %>
+      <td>None</td>
+      <td><%= link_to(image_tag('note.png'), {:controller => 'notes', :action => 'new', :id =>@item.id}) %></td> 
+    <% else %>
+      <td><%=h @item.note.more_notes %></td>
+      <td><%= link_to(image_tag('edit_button.png'), {:controller => 'notes', :action => 'edit',:id => @item.note_id}) %></td>
+      <td><%= link_to(image_tag('delete_button.png'), {:controller => 'notes', :action =>'destroy', :id => @item.note_id }, :confirm => 'Are you sure you want to delete this note?', :method => :delete) %></td>
+    <% end %>
+  </tr>
+</table>
+<hr />
+<%= submit_tag "Save" %>
+<%= submit_tag "Cancel", {:type => 'button', :onClick=>"parent.location='" + url_for(:action => 'index' ) + "'" } %>
+<% end %>

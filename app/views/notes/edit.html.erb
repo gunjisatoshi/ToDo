@@ -1,0 +1,6 @@
+<% @heading = "Edit Note" %>
+<% form_tag :action => 'update', :id => @note do %>
+<%= render :partial =>  'form' %>
+<%= submit_tag "Save" %>
+<%= submit_tag "Cancel", {:type => 'button', :onClick => "parent.location='" + url_for( :controller => 'items', :action => 'index' ) + "'" } %>
+<% end %>

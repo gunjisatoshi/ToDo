@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  done: false
+  priority: 1
+  description: MyString
+  due_date: 2009-05-22
+  category_id: 1
+  note_id: 1
+  private: false
+
+two:
+  done: false
+  priority: 1
+  description: MyString
+  due_date: 2009-05-22
+  category_id: 1
+  note_id: 1
+  private: false

@@ -1,0 +1,19 @@
+<tr class="<%= index_stripes_counter.modulo(2).nonzero? ? "dk_gray" : "lt_gray" %>">
+  <td style="text-align: center">
+    <%= hidden_field_tag('item[' + index_stripes.id.to_s + '][done]','false') %>
+    <%= check_box_tag('item[' + index_stripes.id.to_s + '][done]','true',index_stripes["done"]) %>
+  </td>
+  <td style="text-align: center"><%= index_stripes["priority"] %></td>
+  <td><%=h index_stripes["description"] %></td>
+  <% if index_stripes["due_date"].nil? %>
+    <td>&nbsp;</td>
+  <% else %>
+    <%= index_stripes["due_date"] < Date.today ? '<td class="past_due" style="textalign: center">' : '<td style="text-align: center">' %>
+    <%=  index_stripes["due_date"].strftime("%y/%m/%d") %></td>
+  <% end %>
+  <td><%=h index_stripes.category ? index_stripes.category["category"] : 'Unfiled' %></td>
+  <td><%= index_stripes["note_id"].nil? ? '&nbsp;' : show_image('note_ico.gif')%></td>
+  <td><%= index_stripes["private"] ? show_image('private_ico.gif') : '&nbsp;' %></td>
+  <td><%= link_to(image_tag('edit.png'), { :controller => 'items', :action => 'edit', :id => index_stripes.id }) %></td>
+  <td><%= link_to(image_tag('delete.png'), { :controller => 'items', :action => 'destroy',:id => index_stripes.id }, :confirm => 'Are you sure you want to delete this item?', :method => :delete) %></td>
+</tr>

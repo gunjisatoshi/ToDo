@@ -1,0 +1,21 @@
+<% @heading = "To Do List" %>
+<% form_tag :action => 'updater' do %>
+<table>
+  <tr>
+    <th><%= link_to(image_tag('done.png'), {:action => 'purge_completed'}, :confirm => 'Are you sure you want to permanently delete all completed To Dos?', :method => :post) %></th>
+    <th><%= link_to(image_tag('priority.png', 'alt' => 'Sort by Priority'),{:action => 'index', :order => 'priority'}) %></th>
+    <th><%= link_to(image_tag('description.png', 'alt' => 'Sort by Description'),{:action => 'index',:order => 'description'}) %></th>
+    <th><%= link_to(image_tag('due_date.png', 'alt' => 'Sort by Due Date'), {:action => 'index'}) %></th>
+    <th><%= link_to(image_tag('category.png', 'alt' => 'Sort by Category'), {:action => 'index', :order => 'category'}) %></th>
+    <th><%= show_image 'note' %></th>
+    <th><%= show_image 'private' %></th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+<%= render :partial => 'index_stripes', :collection => @items %>
+</table>
+<hr />
+<%= submit_tag "Save" %>
+<%= submit_tag "New To Do..." , {:type => 'button', :onClick => "parent.location='" + url_for( :action => 'new' ) + "'" } %>
+<%= submit_tag "Categories...", {:type => 'button', :onClick => "parent.location='" + url_for( :controller => 'categories', :action => 'index' ) + "'" } %>
+<% end %>

@@ -1,0 +1,28 @@
+<tr>
+  <td><b>Description: </b></td>
+  <td><%= text_field 'item', 'description', 'size' => 40, 'maxlength' => 40%></td>
+</tr>
+<tr>
+  <td><b>Date due: </b></td>
+  <td><%= date_select 'item', 'due_date', :use_month_numbers => true %></td>
+</tr>
+<tr>
+  <td><b>Category: </b></td>
+  <td><select id='item_category_id' name='item[category_id]'>
+        <%= options_from_collection_for_select(@categories, 'id', 'category', @item.category_id) %>
+  </select>
+  </td>
+</tr>
+<tr>
+  <td><b>Priority: </b></td>
+    <% @item.priority = 3 %>
+  <td><%= select 'item','priority',[1,2,3,4,5] %></td>
+</tr>
+<tr>
+  <td><b>Private? </b></td>
+  <td><%= check_box 'item','private' %></td>
+</tr>
+<tr>
+  <td><b>Complete? </b></td>
+  <td><%= check_box 'item', 'done' %></td>
+</tr>

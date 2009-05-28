@@ -1,0 +1,11 @@
+<% @heading = "Add New category" %>
+<%= error_messages_for :category %>
+<% form_for(@category) do |f| %>
+  <p>
+    <%= f.label :category %><br />
+    <%= f.text_field :category, :size => 20, :maxlength => 20 %>
+  </p>
+<hr />
+    <%= f.submit 'Save' %>
+    <%= submit_tag "Cancel", {:type => 'button', :onClick => "parent.location='" + url_for( :action=> 'index' ) + "'"} %>
+<% end %>

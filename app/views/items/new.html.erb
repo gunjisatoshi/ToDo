@@ -1,0 +1,10 @@
+<% @heading = "New To Do" %>
+<%= error_messages_for 'item' %>
+<% form_tag :action => 'create' do %>
+<table>
+  <%= render :partial => "form" %>
+</table>
+<hr />
+<%= submit_tag "Save" %>
+<%= submit_tag "Cancel", {:type => 'button', :onClick=>"parent.location='" + url_for(:action => 'index' ) + "'" } %>
+<% end %>

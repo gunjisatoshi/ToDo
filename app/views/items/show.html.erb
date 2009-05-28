@@ -1,0 +1,38 @@
+<p>
+  <b>Done:</b>
+  <%=h @item.done %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%=h @item.priority %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @item.description %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%=h @item.due_date %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @item.category_id %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @item.note_id %>
+</p>
+
+<p>
+  <b>Private:</b>
+  <%=h @item.private %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
